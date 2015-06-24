@@ -12,7 +12,7 @@ var extend = require('extend'),
 			});
 			win.add(
 				new UI.Image({
-					image: 'OMNI_LOGO_WHITE_BG',
+					image: 'images/menu_icon.png',
 					compositing: 'and',
 					position: new Vector2(0,0),
 					size: new Vector2(144,168)
