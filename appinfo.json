@@ -30,8 +30,8 @@
                 "type": "font"
             },
             {
-                "file": "images/menu_icon.png",
-                "name": "IMAGES_MENU_ICON_PNG",
+                "file": "images/omni.png",
+                "name": "IMAGES_OMNI_PNG",
                 "type": "png"
             }
         ]
