@@ -8,14 +8,13 @@ var extend = require('extend'),
 		Splash: function(){
 			var win = new UI.Window({
 				scrollable: true,
-				backgroundColor: 'dukeBlue'
+				backgroundColor: 'black'
 			});
 			win.add(
 				new UI.Image({
-					image: 'images/menu_icon.png',
-					compositing: 'and',
-					position: new Vector2(0,0),
-					size: new Vector2(144,168)
+					image: 'images/omni_black.png',
+					position: new Vector2(10,10),
+					size: new Vector2(28,28)
 				})
 			);
 			win.on('click','select',function(){
@@ -23,6 +22,21 @@ var extend = require('extend'),
 				(new windows.Main()).show();
 			});
 			return win;
+		},
+		Error: function(msg,body){
+			body = body===undefined?'':body;
+			msg = msg===undefined?'':msg;
+			var card = new UI.Card({
+				scrollable: true,
+				title: 'Error',
+				subtitle: msg,
+				body: body
+			});
+			card.on('click','select',function(){
+				card.hide();
+			});
+			card.show();
+			return card;
 		},
 		Main: function(){
 			var menu = new UI.Menu({
@@ -58,6 +72,9 @@ var extend = require('extend'),
 								.member(state.id)
 								.then(function(d){
 									(new windows.User(d)).show();
+								})
+								.catch(function(e){
+									new windows.Error('SMF Error',JSON.stringify(e));
 								});
 						},
 						function(){
@@ -65,6 +82,9 @@ var extend = require('extend'),
 								.recent()
 								.then(function(d){
 									(new windows.Recent(d,0)).show();
+								})
+								.catch(function(e){
+									new windows.Error('SMF Error',JSON.stringify(e));
 								});
 						},
 						function(){
@@ -72,6 +92,9 @@ var extend = require('extend'),
 								.member('dj')
 								.then(function(d){
 									(new windows.Users(d)).show();
+								})
+								.catch(function(e){
+									new windows.Error('SMF Error',JSON.stringify(e));
 								});
 						}
 					]
@@ -112,6 +135,9 @@ var extend = require('extend'),
 					.member(data[e.itemIndex].id)
 					.then(function(d){
 						(new windows.User(d)).show();
+					})
+					.catch(function(e){
+						new windows.Error('SMF Error',JSON.stringify(e));
 					});
 			});
 			return menu;
@@ -157,6 +183,9 @@ var extend = require('extend'),
 					.topic(data[e.itemIndex].id)
 					.then(function(d){
 						(new windows.Topic(d)).show();
+					})
+					.catch(function(e){
+						new windows.Error('SMF Error',JSON.stringify(e));
 					});
 			});
 			return menu;

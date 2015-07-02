@@ -10,7 +10,6 @@
         "media": [
             {
                 "file": "images/menu_icon.png",
-                "menuIcon": true,
                 "name": "IMAGE_MENU_ICON",
                 "type": "png"
             },
@@ -30,8 +29,14 @@
                 "type": "font"
             },
             {
-                "file": "images/omni.png",
-                "name": "IMAGES_OMNI_PNG",
+                "file": "images/omni_black.png",
+                "name": "IMAGES_OMNI_BLACK_PNG",
+                "type": "png"
+            },
+            {
+                "file": "images/omni_white.png",
+                "menuIcon": true,
+                "name": "IMAGES_OMNI_WHITE_PNG",
                 "type": "png"
             }
         ]
